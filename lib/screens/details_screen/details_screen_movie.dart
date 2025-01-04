@@ -41,11 +41,14 @@ class DetailsScreenMovie extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    Text(
-                      movie.originalTitle,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 23,
+                    Expanded(
+                      child:Text(
+                        movie.originalTitle,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 23,
+                            overflow: TextOverflow.ellipsis
+                        ),
                       ),
                     ),
                     Tooltip(

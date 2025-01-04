@@ -55,11 +55,14 @@ class DetailsScreenActor extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    Text(
-                      actor.name,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 23,
+                    Expanded(
+                      child: Text(
+                        actor.name,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 23,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Tooltip(

@@ -42,11 +42,14 @@ class DetailsScreenSeries extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    Text(
-                      tvSeries.originalName,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 23,
+                    Expanded(
+                      child: Text(
+                        tvSeries.originalName,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 23,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Tooltip(
