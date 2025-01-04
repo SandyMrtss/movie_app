@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/controllers/my_search_controller.dart';
 
+import 'package:movie_app/controllers/my_search_controller.dart';
 
 class SearchBox extends StatelessWidget {
   const SearchBox({

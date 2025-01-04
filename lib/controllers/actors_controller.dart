@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import 'package:movie_app/api/api_service.dart';
 import 'package:movie_app/models/actor.dart';
 import 'package:movie_app/controllers/generic_controller.dart';

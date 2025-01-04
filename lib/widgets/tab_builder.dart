@@ -1,16 +1,15 @@
 import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:movie_app/main.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/models/tv_series.dart';
-
-import 'package:movie_app/api/api.dart';
 import 'package:movie_app/models/actor.dart';
+import 'package:movie_app/api/api.dart';
 import 'package:movie_app/screens/detail_screen_generic.dart';
 import 'package:movie_app/utils/utils.dart';
-
-import 'name_label.dart';
+import 'package:movie_app/widgets/name_label.dart';
 
 class TabBuilder extends StatelessWidget {
   const TabBuilder({
@@ -39,7 +38,6 @@ class TabBuilder extends StatelessWidget {
           if (snapshot.hasData) {
             return GridView.builder(
               physics: const AlwaysScrollableScrollPhysics(),
-              // shrinkWrap: true,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 crossAxisSpacing: 15.0,
@@ -78,8 +76,6 @@ class TabBuilder extends StatelessWidget {
                         ),
                         Container(
                           alignment: Alignment.bottomCenter,
-                         // width: 180,
-                          //height: 300,
                           child:
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,7 +87,6 @@ class TabBuilder extends StatelessWidget {
                         ),
                       ],
                     ),
-
                 ),
               ),
             );

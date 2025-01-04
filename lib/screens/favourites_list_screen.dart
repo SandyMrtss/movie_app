@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:movie_app/controllers/actors_controller.dart';
 import 'package:movie_app/controllers/movies_controller.dart';
 import 'package:movie_app/controllers/series_controller.dart';

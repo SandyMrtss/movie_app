@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movie_app/api/api_service.dart';
 import 'package:movie_app/main.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/models/tv_series.dart';
+import 'package:movie_app/models/actor.dart';
 import 'package:movie_app/screens/details_screen/details_screen_actor.dart';
 import 'package:movie_app/screens/details_screen/details_screen_series.dart';
-
-import '../models/actor.dart';
-import 'details_screen/details_screen_movie.dart';
+import 'package:movie_app/screens/details_screen/details_screen_movie.dart';
 
 class DetailsScreenGeneric{
 

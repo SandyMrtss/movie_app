@@ -1,9 +1,10 @@
 import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'package:movie_app/api/api.dart';
 import 'package:movie_app/api/api_end_points.dart';
 import 'package:movie_app/models/actor.dart';
 import 'package:movie_app/models/movie.dart';
-import 'package:http/http.dart' as http;
 import 'package:movie_app/models/review.dart';
 import 'package:movie_app/models/tv_series.dart';
 

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:movie_app/main.dart';
 import 'package:movie_app/models/actor.dart';
-import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/utils/utils.dart';
 
 class InfoActor extends StatelessWidget {

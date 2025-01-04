@@ -2,15 +2,15 @@ import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+
+import 'package:movie_app/main.dart';
 import 'package:movie_app/api/api.dart';
 import 'package:movie_app/controllers/bottom_navigator_controller.dart';
+import 'package:movie_app/controllers/my_search_controller.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/widgets/infos.dart';
 import 'package:movie_app/widgets/search_box.dart';
-
-import '../controllers/my_search_controller.dart';
-import '../main.dart';
-import 'details_screen/details_screen_movie.dart';
+import 'package:movie_app/screens/details_screen/details_screen_movie.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});

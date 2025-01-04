@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:movie_app/controllers/bottom_navigator_controller.dart';
 
 class Main extends StatelessWidget {

@@ -1,16 +1,15 @@
 import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:movie_app/main.dart';
+import 'package:movie_app/api/api.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/models/tv_series.dart';
-
-import 'package:movie_app/api/api.dart';
 import 'package:movie_app/models/actor.dart';
 import 'package:movie_app/screens/detail_screen_generic.dart';
 import 'package:movie_app/utils/utils.dart';
-
-import 'infos.dart';
+import 'package:movie_app/widgets/infos.dart';
 
 class FavouritesList extends StatelessWidget {
   const FavouritesList({

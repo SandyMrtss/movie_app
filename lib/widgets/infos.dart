@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:movie_app/main.dart';
 import 'package:movie_app/utils/utils.dart';
 

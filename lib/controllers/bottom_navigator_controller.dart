@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import 'package:movie_app/screens/home_screen/home_screen_actors.dart';
 import 'package:movie_app/screens/home_screen/home_screen_movies.dart';
 import 'package:movie_app/screens/home_screen/home_screen_series.dart';

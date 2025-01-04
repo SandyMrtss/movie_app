@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:movie_app/api/api_service.dart';
 import 'package:movie_app/controllers/bottom_navigator_controller.dart';
 import 'package:movie_app/controllers/movies_controller.dart';
@@ -8,7 +9,6 @@ import 'package:movie_app/main.dart';
 import 'package:movie_app/widgets/my_tab_bar.dart';
 import 'package:movie_app/widgets/search_box.dart';
 import 'package:movie_app/widgets/top_rated_item.dart';
-
 import 'package:movie_app/widgets/tab_builder.dart';
 
 class HomeScreenMovies extends StatelessWidget {
