@@ -152,7 +152,7 @@ class ApiService {
       http.Response response = await http.get(Uri.parse(
           '${Api.baseUrl}${ApiEndPoints.movieCredits(movieId)}${Api.endUrl}'));
       var res = jsonDecode(response.body);
-      res['cast'].forEach(
+      res['cast'].take(18).forEach(
             (a) {
           actors.add(
             Actor.fromMap(a),
@@ -171,7 +171,7 @@ class ApiService {
       http.Response response = await http.get(Uri.parse(
           '${Api.baseUrl}${ApiEndPoints.tvSeriesCredits(tvSeriesId)}${Api.endUrl}'));
       var res = jsonDecode(response.body);
-      res['cast'].forEach(
+      res['cast'].take(18).forEach(
             (a) {
           actors.add(
             Actor.fromMap(a),
