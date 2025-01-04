@@ -25,12 +25,13 @@ class InfoActor extends StatelessWidget {
               Utils.getRating(actor, MediaType.actor),
               style: const TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.w200,
+                fontWeight: FontWeight.w300,
                 color: Colors.amber,
               ),
             ),
           ],
         ),
+        const SizedBox(height: 4,),
         Row(
           children: [
             Icon(Icons.location_pin, color: Colors.white,),
@@ -40,15 +41,16 @@ class InfoActor extends StatelessWidget {
             Text(
               actor.placeOfBirth,
               style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w200,
+                fontSize: 16,
+                fontWeight: FontWeight.w300,
               ),
             ),
           ],
         ),
+        const SizedBox(height: 4,),
         Row(
           children: [
-            Icon(Icons.calendar_today_outlined, color: Colors.white, size: 15,),
+            Icon(Icons.calendar_today_outlined, color: Colors.white, ),
             const SizedBox(
               width: 5,
             ),
@@ -56,7 +58,7 @@ class InfoActor extends StatelessWidget {
               Utils.getDate(actor, MediaType.actor),
               style: const TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.w200,
+                fontWeight: FontWeight.w300,
               ),
             ),
           ],

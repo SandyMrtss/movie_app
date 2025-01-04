@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:movie_app/main.dart';
 import 'package:movie_app/models/movie.dart';
@@ -26,30 +25,32 @@ class InfoMovie extends StatelessWidget {
               Utils.getRating(movie, MediaType.movie),
               style: const TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.w200,
+                fontWeight: FontWeight.w300,
                 color: Colors.amber,
               ),
             ),
           ],
         ),
+        const SizedBox(height: 4,),
         Row(
           children: [
-            SvgPicture.asset('assets/Ticket.svg'),
+            Icon(Icons.language, color: Colors.white,),
             const SizedBox(
               width: 5,
             ),
             Text(
               Utils.getGenres(movie, MediaType.movie),
               style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w200,
+                fontSize: 16,
+                fontWeight: FontWeight.w300,
               ),
             ),
           ],
         ),
+        const SizedBox(height: 4,),
         Row(
           children: [
-            Icon(Icons.calendar_today_outlined, color: Colors.white, size: 15,),
+            Icon(Icons.calendar_today_outlined, color: Colors.white,),
             const SizedBox(
               width: 5,
             ),
@@ -57,7 +58,7 @@ class InfoMovie extends StatelessWidget {
               Utils.getDate(movie, MediaType.movie),
               style: const TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.w200,
+                fontWeight: FontWeight.w300,
               ),
             ),
           ],

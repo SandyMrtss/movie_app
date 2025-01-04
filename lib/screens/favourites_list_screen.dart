@@ -61,11 +61,17 @@ class FavouritesListScreen extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    MyTabBar(tabs: [Tab(text: 'Movies'), Tab(text: 'TV Series'), Tab(text: 'Actors'),]),
+                    MyTabBar(tabs: [Tab(text: 'Actors'), Tab(text: 'Movies'), Tab(text: 'TV Series'), ]),
                   SizedBox(
                     height: Get.height,
                     child: TabBarView(
                       children: [
+                        if (Get.find<ActorsController>().favouritesList.isEmpty)
+                          nothingInListText('actors')
+                        else
+                          FavouritesList(
+                            list: Get.find<ActorsController>().favouritesList, mediaType: MediaType.actor,
+                          ),
                         if (Get.find<MoviesController>().favouritesList.isEmpty)
                             nothingInListText('movies')
                         else
@@ -77,12 +83,6 @@ class FavouritesListScreen extends StatelessWidget {
                         else
                           FavouritesList(
                             list: Get.find<SeriesController>().favouritesList, mediaType: MediaType.tv,
-                        ),
-                        if (Get.find<ActorsController>().favouritesList.isEmpty)
-                          nothingInListText('actors')
-                        else
-                          FavouritesList(
-                            list: Get.find<ActorsController>().favouritesList, mediaType: MediaType.actor,
                         ),
                       ]
                     ),

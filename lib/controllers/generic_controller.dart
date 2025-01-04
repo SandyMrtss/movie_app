@@ -9,13 +9,13 @@ abstract class GenericController<T> extends GetxController {
   static void snackBarRemoved(){
     Get.snackbar('Success', 'Removed from favourites',
         snackPosition: SnackPosition.BOTTOM,
-        animationDuration: const Duration(milliseconds: 800),
-        duration: const Duration(milliseconds: 800));
+        animationDuration: const Duration(milliseconds: 1500),
+        duration: const Duration(milliseconds: 1500));
   }
   static void snackBarAdded(){
     Get.snackbar('Success', 'Added to favourites',
         snackPosition: SnackPosition.BOTTOM,
-        animationDuration: const Duration(milliseconds: 800),
-        duration: const Duration(milliseconds: 800));
+        animationDuration: const Duration(milliseconds: 1500),
+        duration: const Duration(milliseconds: 1500));
   }
 }

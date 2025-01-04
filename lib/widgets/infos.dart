@@ -17,19 +17,20 @@ class Infos extends StatelessWidget {
       height: 180,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          SizedBox(height: 5,),
           SizedBox(
-            width: 200,
+            width: 270,
             child: Text(
               Utils.getMainName(item, mediaType),
+              textAlign: TextAlign.justify,
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w400,
-                overflow: TextOverflow.ellipsis,
               ),
             ),
           ),
+          SizedBox(height: 5,),
           Utils.getInfography(item, mediaType),
 
         ],

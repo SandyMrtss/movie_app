@@ -31,14 +31,14 @@ class FavouritesList extends StatelessWidget {
         listType = list as List<Actor>;
     }
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(5),
       child:
       GridView.builder(
         physics: const AlwaysScrollableScrollPhysics(),
          //shrinkWrap: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: 15,
-            childAspectRatio: 1.8,
+            childAspectRatio: 2.5,
             crossAxisCount: 1,
         ),
         itemCount: listType.length,
@@ -47,9 +47,7 @@ class FavouritesList extends StatelessWidget {
             Get.to(DetailsScreenGeneric.getDetailScreen(listType[index], mediaType));
           },
           child:
-
             Row(
-
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
@@ -57,8 +55,8 @@ class FavouritesList extends StatelessWidget {
                   child:
                       Image.network(
                         Api.imageBaseUrl + Utils.getMainImageUrl(listType[index], mediaType),
-                        height: 300,
-                        width: 180,
+                        height: 180,
+                        width: 130,
                         fit: BoxFit.cover,
                         errorBuilder: (_, __, ___) => const Icon(
                           Icons.broken_image,
@@ -68,8 +66,8 @@ class FavouritesList extends StatelessWidget {
                           // ignore: no_wildcard_variable_uses
                           if (___ == null) return __;
                           return const FadeShimmer(
-                            width: 180,
-                            height: 250,
+                            width: 130,
+                            height: 180,
                             highlightColor: Color(0xff22272f),
                             baseColor: Color(0xff20252d),
                           );
@@ -77,8 +75,8 @@ class FavouritesList extends StatelessWidget {
                       ),
                   ),
                 SizedBox(
-                  width: 5,
-                  height: 300,
+                  width: 8,
+                  height: 180,
                 ),
                 Infos(item: listType[index], mediaType: mediaType)
                 ],
