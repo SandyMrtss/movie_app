@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:movie_app/api/api_service.dart';
 import 'package:movie_app/models/movie.dart';
 
-class SearchController1 extends GetxController {
+class MySearchController extends GetxController {
   TextEditingController searchController = TextEditingController();
   var searchText = ''.obs;
   var foundedMovies = <Movie>[].obs;

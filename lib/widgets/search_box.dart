@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/controllers/search_controller.dart';
+import 'package:movie_app/controllers/my_search_controller.dart';
 
 
 class SearchBox extends StatelessWidget {
@@ -13,7 +13,7 @@ class SearchBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: Get.find<SearchController1>().searchController,
+      controller: Get.find<MySearchController>().searchController,
       style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         suffixIcon: IconButton(

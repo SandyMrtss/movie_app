@@ -1,36 +1,34 @@
 import 'package:get/get.dart';
 import 'package:movie_app/api/api_service.dart';
+import 'package:movie_app/controllers/generic_controller.dart';
 import 'package:movie_app/models/movie.dart';
 
-class MoviesController extends GetxController {
+class MoviesController extends GetxController implements GenericController<Movie>{
   var isLoading = false.obs;
   var mainTopRatedMovies = <Movie>[].obs;
-  var watchListMovies = <Movie>[].obs;
+  var favouritesList = <Movie>[].obs;
   @override
   void onInit() async {
     isLoading.value = true;
-    mainTopRatedMovies.value = (await ApiService.getTopRatedMovies())!;
+    mainTopRatedMovies.value = (await ApiService.getPopularMovies(true))!;
     isLoading.value = false;
     super.onInit();
   }
 
-  bool isInWatchList(Movie movie) {
-    return watchListMovies.any((m) => m.id == movie.id);
+  @override
+  bool isInFavouritesList(Movie movie) {
+    return favouritesList.any((m) => m.id == movie.id);
   }
 
-  void addToWatchList(Movie movie) {
-    if (watchListMovies.any((m) => m.id == movie.id)) {
-      watchListMovies.remove(movie);
-      Get.snackbar('Success', 'removed from watch list',
-          snackPosition: SnackPosition.BOTTOM,
-          animationDuration: const Duration(milliseconds: 500),
-          duration: const Duration(milliseconds: 500));
+  @override
+  void addToFavouritesList(Movie movie) {
+    if (favouritesList.any((m) => m.id == movie.id)) {
+      favouritesList.remove(movie);
+      GenericController.snackBarRemoved();
     } else {
-      watchListMovies.add(movie);
-      Get.snackbar('Success', 'added to watch list',
-          snackPosition: SnackPosition.BOTTOM,
-          animationDuration: const Duration(milliseconds: 500),
-          duration: const Duration(milliseconds: 500));
+      favouritesList.add(movie);
+      GenericController.snackBarAdded();
     }
   }
+
 }

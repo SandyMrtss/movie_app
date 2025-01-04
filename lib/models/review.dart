@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 class Review {
   String author;
   String comment;
@@ -9,11 +11,13 @@ class Review {
     required this.rating,
   });
 
-  factory Review.fromJson(Map<String, dynamic> map) {
+  factory Review.fromMap(Map<String, dynamic> map) {
     return Review(
       author: map['name'] ?? '',
       comment: map['content'] ?? '',
-      rating: map['rating']?.toDouble() ?? 0.0,
+      rating: map['author_details']['rating']?.toDouble() ?? 0.0,
     );
   }
+  factory Review.fromJson(String source) => Review.fromMap(json.decode(source));
+
 }

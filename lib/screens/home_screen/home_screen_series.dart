@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movie_app/api/api.dart';
 import 'package:movie_app/api/api_service.dart';
 import 'package:movie_app/controllers/bottom_navigator_controller.dart';
-import 'package:movie_app/controllers/movies_controller.dart';
-import 'package:movie_app/controllers/search_controller.dart';
+import 'package:movie_app/controllers/my_search_controller.dart';
+import 'package:movie_app/controllers/series_controller.dart';
+import 'package:movie_app/main.dart';
+import 'package:movie_app/widgets/my_tab_bar.dart';
 import 'package:movie_app/widgets/search_box.dart';
-import 'package:movie_app/widgets/tab_builder.dart';
 import 'package:movie_app/widgets/top_rated_item.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+import 'package:movie_app/widgets/tab_builder.dart';
 
-  final MoviesController controller = Get.put(MoviesController());
-  final SearchController1 searchController = Get.put(SearchController1());
+class HomeScreenSeries extends StatelessWidget {
+  HomeScreenSeries({super.key});
+
+  final SeriesController controller = Get.put(SeriesController());
+  final MySearchController searchController = Get.put(MySearchController());
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -28,7 +30,7 @@ class HomeScreen extends StatelessWidget {
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'What do you want to watch?',
+                'Browse TV Series',
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 24,
@@ -41,9 +43,9 @@ class HomeScreen extends StatelessWidget {
             SearchBox(
               onSumbit: () {
                 String search =
-                    Get.find<SearchController1>().searchController.text;
-                Get.find<SearchController1>().searchController.text = '';
-                Get.find<SearchController1>().search(search);
+                    Get.find<MySearchController>().searchController.text;
+                Get.find<MySearchController>().searchController.text = '';
+                Get.find<MySearchController>().search(search);
                 Get.find<BottomNavigatorController>().setIndex(1);
                 FocusManager.instance.primaryFocus?.unfocus();
               },
@@ -57,13 +59,14 @@ class HomeScreen extends StatelessWidget {
                   : SizedBox(
                 height: 300,
                 child: ListView.separated(
-                  itemCount: controller.mainTopRatedMovies.length,
+                  itemCount: controller.mainTopRatedTvSeries.length,
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   separatorBuilder: (_, __) => const SizedBox(width: 24),
                   itemBuilder: (_, index) => TopRatedItem(
-                      movie: controller.mainTopRatedMovies[index],
-                      index: index + 1),
+                      item: controller.mainTopRatedTvSeries[index],
+                      index: index + 1,
+                      mediaType: MediaType.tv,),
                 ),
               )),
             ),
@@ -72,36 +75,24 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const TabBar(
-                      indicatorWeight: 3,
-                      indicatorColor: Color(
-                        0xFF3A3F47,
-                      ),
-                      labelStyle: TextStyle(fontSize: 11.0),
-                      tabs: [
-                        Tab(text: 'Now playing'),
-                        Tab(text: 'Upcoming'),
-                        Tab(text: 'Top rated'),
-                        Tab(text: 'Popular'),
-                      ]),
+                  MyTabBar(tabs: [Tab(text: 'Airing today'), Tab(text: 'On the air'), Tab(text: 'Top rated'), Tab(text: 'Popular'),],),
                   SizedBox(
                     height: 400,
                     child: TabBarView(children: [
                       TabBuilder(
-                        future: ApiService.getCustomMovies(
-                            'now_playing?api_key=${Api.apiKey}&language=en-US&page=1'),
+                        future: ApiService.getCustomTvSeries(
+                            'airing_today'), mediaType: MediaType.tv,
                       ),
                       TabBuilder(
-                        future: ApiService.getCustomMovies(
-                            'upcoming?api_key=${Api.apiKey}&language=en-US&page=1'),
+                        future: ApiService.getCustomTvSeries(
+                            'on_the_air'), mediaType: MediaType.tv,
                       ),
                       TabBuilder(
-                        future: ApiService.getCustomMovies(
-                            'top_rated?api_key=${Api.apiKey}&language=en-US&page=1'),
+                        future: ApiService.getCustomTvSeries(
+                            'top_rated'),mediaType: MediaType.tv,
                       ),
                       TabBuilder(
-                        future: ApiService.getCustomMovies(
-                            'popular?api_key=${Api.apiKey}&language=en-US&page=1'),
+                        future: ApiService.getPopularTvSeries(false), mediaType: MediaType.tv,
                       ),
                     ]),
                   ),

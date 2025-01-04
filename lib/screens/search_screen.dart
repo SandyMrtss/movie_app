@@ -4,11 +4,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/api/api.dart';
 import 'package:movie_app/controllers/bottom_navigator_controller.dart';
-import 'package:movie_app/controllers/search_controller.dart';
 import 'package:movie_app/models/movie.dart';
-import 'package:movie_app/screens/details_screen.dart';
 import 'package:movie_app/widgets/infos.dart';
 import 'package:movie_app/widgets/search_box.dart';
+
+import '../controllers/my_search_controller.dart';
+import '../main.dart';
+import 'details_screen/details_screen_movie.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -61,9 +63,9 @@ class _SearchScreenState extends State<SearchScreen> {
             SearchBox(
               onSumbit: () {
                 String search =
-                    Get.find<SearchController1>().searchController.text;
-                Get.find<SearchController1>().searchController.text = '';
-                Get.find<SearchController1>().search(search);
+                    Get.find<MySearchController>().searchController.text;
+                Get.find<MySearchController>().searchController.text = '';
+                Get.find<MySearchController>().search(search);
                 FocusManager.instance.primaryFocus?.unfocus();
               },
             ),
@@ -71,9 +73,9 @@ class _SearchScreenState extends State<SearchScreen> {
               height: 34,
             ),
             Obx(
-              (() => Get.find<SearchController1>().isLoading.value
+              (() => Get.find<MySearchController>().isLoading.value
                   ? const CircularProgressIndicator()
-                  : Get.find<SearchController1>().foundedMovies.isEmpty
+                  : Get.find<MySearchController>().foundedMovies.isEmpty
                   ? SizedBox(
                 width: Get.width / 1.5,
                 child: Column(
@@ -117,16 +119,16 @@ class _SearchScreenState extends State<SearchScreen> {
               )
                   : ListView.separated(
                   itemCount:
-                  Get.find<SearchController1>().foundedMovies.length,
+                  Get.find<MySearchController>().foundedMovies.length,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   separatorBuilder: (_, __) =>
                   const SizedBox(height: 24),
                   itemBuilder: (_, index) {
-                    Movie movie = Get.find<SearchController1>()
+                    Movie movie = Get.find<MySearchController>()
                         .foundedMovies[index];
                     return GestureDetector(
-                      onTap: () => Get.to(DetailsScreen(movie: movie)),
+                      onTap: () => Get.to(DetailsScreenMovie(movie: movie)),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -156,7 +158,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           const SizedBox(
                             width: 20,
                           ),
-                          Infos(movie: movie)
+                          Infos(item: movie, mediaType: MediaType.movie,)
                         ],
                       ),
                     );

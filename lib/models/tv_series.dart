@@ -1,43 +1,46 @@
 import 'dart:convert';
 
-class Movie {
+class TvSeries {
   int id;
-  String title;
+  String name;
   String posterPath;
   String backdropPath;
   String overview;
-  String releaseDate;
+  String firstAirDate;
   String originalLanguage;
-  String originalTitle;
+  String originalName;
+  List<String> originCountry;
   double voteAverage;
   List<int> genreIds;
-  Movie({
+  TvSeries({
     required this.id,
-    required this.title,
+    required this.name,
     required this.posterPath,
     required this.backdropPath,
     required this.overview,
+    required this.firstAirDate,
     required this.originalLanguage,
-    required this.originalTitle,
-    required this.releaseDate,
+    required this.originalName,
+    required this.originCountry,
     required this.voteAverage,
     required this.genreIds,
   });
 
-  factory Movie.fromMap(Map<String, dynamic> map) {
-    return Movie(
+  factory TvSeries.fromMap(Map<String, dynamic> map) {
+    return TvSeries(
       id: map['id'] as int,
-      title: map['title'] ?? '',
+      name: map['name'] ?? '',
       posterPath: map['poster_path'] ?? '',
       backdropPath: map['backdrop_path'] ?? '',
       overview: map['overview'] ?? '',
+      firstAirDate: map['first_air_date'].replaceAll('-', '/') ?? '',
       originalLanguage: map['original_language'] ?? '',
-      originalTitle: map['original_title'] ?? '',
-      releaseDate: map['release_date'].replaceAll('-', '/') ?? '',
+      originalName: map['original_name'] ?? '',
+      originCountry: List<String>.from(map['origin_country']),
       voteAverage: map['vote_average']?.toDouble() ?? 0.0,
       genreIds: List<int>.from(map['genre_ids']),
     );
   }
 
-  factory Movie.fromJson(String source) => Movie.fromMap(json.decode(source));
+  factory TvSeries.fromJson(String source) => TvSeries.fromMap(json.decode(source));
 }

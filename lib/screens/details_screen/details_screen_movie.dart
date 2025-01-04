@@ -1,68 +1,70 @@
 import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+
 import 'package:movie_app/api/api.dart';
 import 'package:movie_app/api/api_service.dart';
 import 'package:movie_app/controllers/movies_controller.dart';
-
+import 'package:movie_app/main.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/models/review.dart';
 import 'package:movie_app/utils/utils.dart';
+import 'package:movie_app/widgets/my_tab_bar.dart';
+import 'package:movie_app/widgets/tab_builder.dart';
 
-class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({
+class DetailsScreenMovie extends StatelessWidget {
+  const DetailsScreenMovie({
     super.key,
     required this.movie,
   });
   final Movie movie;
   @override
   Widget build(BuildContext context) {
-    ApiService.getMovieReviews(movie.id);
+    ApiService.getMoviesCast(movie.id.toString());
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 24, right: 24, top: 34),
+                padding: const EdgeInsets.all(10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     IconButton(
-                      tooltip: 'Back to home',
+                      tooltip: 'Go back',
                       onPressed: () => Get.back(),
                       icon: const Icon(
                         Icons.arrow_back_ios,
                         color: Colors.white,
                       ),
                     ),
-                    const Text(
-                      'Detail',
-                      style: TextStyle(
+                    Text(
+                      movie.originalTitle,
+                      style: const TextStyle(
                         fontWeight: FontWeight.w400,
-                        fontSize: 24,
+                        fontSize: 23,
                       ),
                     ),
                     Tooltip(
-                      message: 'Save this movie to your watch list',
+                      message: 'Save to favourites',
                       triggerMode: TooltipTriggerMode.tap,
                       child: IconButton(
                         onPressed: () {
-                          Get.find<MoviesController>().addToWatchList(movie);
-
+                          Get.find<MoviesController>().addToFavouritesList(movie);
                         },
                         icon: Obx(
                               () =>
-                          Get.find<MoviesController>().isInWatchList(movie)
+                          Get.find<MoviesController>().isInFavouritesList(movie)
                               ? const Icon(
-                            Icons.bookmark,
-                            color: Colors.white,
+                            Icons.favorite,
+                            color: Colors.yellow,
                             size: 33,
                           )
                               : const Icon(
-                            Icons.bookmark_outline,
+                            Icons.favorite_outline,
                             color: Colors.white,
                             size: 33,
                           ),
@@ -72,17 +74,13 @@ class DetailsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 40,
-              ),
               SizedBox(
                 height: 330,
                 child: Stack(
                   children: [
                     ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(16),
-                        bottomRight: Radius.circular(16),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(16),
                       ),
                       child: Image.network(
                         Api.imageBaseUrl + movie.backdropPath,
@@ -115,7 +113,7 @@ class DetailsScreen extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(16),
                           child: Image.network(
-                            'https://image.tmdb.org/t/p/w500/${movie.posterPath}',
+                            Api.imageBaseUrl + movie.posterPath,
                             width: 110,
                             height: 140,
                             fit: BoxFit.cover,
@@ -159,17 +157,15 @@ class DetailsScreen extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            SvgPicture.asset('assets/Star.svg'),
+                            Icon(Icons.star_outline, color: Colors.amberAccent,),
                             const SizedBox(
                               width: 5,
                             ),
                             Text(
-                              movie.voteAverage == 0.0
-                                  ? 'N/A'
-                                  : movie.voteAverage.toString(),
+                              Utils.getRating(movie, MediaType.movie),
                               style: const TextStyle(
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFFFF8700),
+                                color: Colors.amberAccent,
                               ),
                             ),
                           ],
@@ -180,23 +176,23 @@ class DetailsScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 25,
+                height: 10,
               ),
               Opacity(
                 opacity: .6,
                 child: SizedBox(
-                  width: Get.width / 1.3,
+                  width: Get.width,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Row(
                         children: [
-                          SvgPicture.asset('assets/calender.svg'),
+                          Icon(Icons.calendar_today_outlined, color: Colors.white, size: 15,),
                           const SizedBox(
                             width: 5,
                           ),
                           Text(
-                            movie.releaseDate.split('-')[0],
+                            movie.releaseDate.split('/')[0],
                             style: const TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 10,
@@ -212,7 +208,7 @@ class DetailsScreen extends StatelessWidget {
                             width: 5,
                           ),
                           Text(
-                            Utils.getGenres(movie),
+                            Utils.getGenres(movie, MediaType.movie),
                             style: const TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 10,
@@ -231,17 +227,7 @@ class DetailsScreen extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const TabBar(
-                          indicatorWeight: 4,
-                          indicatorSize: TabBarIndicatorSize.label,
-                          indicatorColor: Color(
-                            0xFF3A3F47,
-                          ),
-                          tabs: [
-                            Tab(text: 'About Movie'),
-                            Tab(text: 'Reviews'),
-                            Tab(text: 'Cast'),
-                          ]),
+                      MyTabBar(tabs: [Tab(text: 'About'), Tab(text: 'Reviews'), Tab(text: 'Cast'),],),
                       SizedBox(
                         height: 400,
                         child: TabBarView(children: [
@@ -250,22 +236,22 @@ class DetailsScreen extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Text(
                               movie.overview,
-                              textAlign: TextAlign.center,
+                              textAlign: TextAlign.justify,
                               style: const TextStyle(
-                                fontSize: 20,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w200,
                               ),
                             ),
                           ),
                           FutureBuilder<List<Review>?>(
-                            future: ApiService.getMovieReviews(movie.id),
+                            future: ApiService.getMovieReviews(movie.id.toString()),
                             builder: (_, snapshot) {
                               if (snapshot.hasData) {
                                 return snapshot.data!.isEmpty
                                     ? const Padding(
                                   padding: EdgeInsets.only(top: 30.0),
                                   child: Text(
-                                    'No review',
+                                    'No reviews available',
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -339,7 +325,7 @@ class DetailsScreen extends StatelessWidget {
                               }
                             },
                           ),
-                          Container(),
+                          TabBuilder(future: ApiService.getMoviesCast(movie.id.toString()), mediaType: MediaType.actor,),
                         ]),
                       ),
                     ],
