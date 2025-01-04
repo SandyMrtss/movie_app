@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:movie_app/utils/utils.dart';
+
 class Movie {
   int id;
   String title;
@@ -30,10 +32,10 @@ class Movie {
       title: map['title'] ?? '',
       posterPath: map['poster_path'] ?? '',
       backdropPath: map['backdrop_path'] ?? '',
-      overview: map['overview'] ?? '',
-      originalLanguage: map['original_language'] ?? '',
+      overview: map['overview'] ?? 'N/A',
+      originalLanguage: map['original_language'] ?? 'N/A',
       originalTitle: map['original_title'] ?? '',
-      releaseDate: map['release_date'].replaceAll('-', '/') ?? '',
+      releaseDate: Utils.dateFormat(map['release_date']),
       voteAverage: map['vote_average']?.toDouble() ?? 0.0,
       genreIds: List<int>.from(map['genre_ids']),
     );

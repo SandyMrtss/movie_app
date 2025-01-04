@@ -54,8 +54,19 @@ class Utils{
           g.keys.first == id ? genresListStr.add(g.values.first) : null;
         });
       });
-      return genresListStr.isEmpty ? 'N/A' : genresListStr.take(2).join(',');
+      return genresListStr.isEmpty ? 'N/A' : genresListStr.take(2).join(', ');
     }
+  }
+
+  static String dateFormat(String? originalDate){
+    String date;
+    if(originalDate == null){
+      return 'N/A';
+    } else {
+      List<String> dateParts = originalDate.split('-');
+      date = dateParts.reversed.join('/');
+    }
+    return date;
   }
 
   static String getMainImageUrl(Object object, MediaType mediaType){

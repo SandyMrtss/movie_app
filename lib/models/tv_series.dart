@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:movie_app/utils/utils.dart';
+
 class TvSeries {
   int id;
   String name;
@@ -32,9 +34,9 @@ class TvSeries {
       name: map['name'] ?? '',
       posterPath: map['poster_path'] ?? '',
       backdropPath: map['backdrop_path'] ?? '',
-      overview: map['overview'] ?? '',
-      firstAirDate: map['first_air_date'].replaceAll('-', '/') ?? '',
-      originalLanguage: map['original_language'] ?? '',
+      overview: map['overview'] ?? 'N/A',
+      firstAirDate: Utils.dateFormat(map['first_air_date']),
+      originalLanguage: map['original_language'] ?? 'N/A',
       originalName: map['original_name'] ?? '',
       originCountry: List<String>.from(map['origin_country']),
       voteAverage: map['vote_average']?.toDouble() ?? 0.0,

@@ -24,6 +24,8 @@ class Infos extends StatelessWidget {
             child: Text(
               Utils.getMainName(item, mediaType),
               textAlign: TextAlign.justify,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w400,

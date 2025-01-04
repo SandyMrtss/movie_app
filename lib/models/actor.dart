@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:movie_app/utils/utils.dart';
+
 class Actor {
   int id;
   String name;
@@ -31,10 +33,10 @@ class Actor {
       name: map['name'] ?? '',
       gender: map['gender'] as int,
       biography: map['biography'] ?? '',
-      birthday: map['birthday']?.replaceAll('-', '/') ?? '',
-      deathDay: map['deathday']?.replaceAll('-', '/') ?? '',
+      birthday: Utils.dateFormat(map['birthday']),
+      deathDay: Utils.dateFormat(map['deathday']),
       homepage: map['homepage'] ?? '',
-      placeOfBirth: map['place_of_birth'] ?? '',
+      placeOfBirth: map['place_of_birth'] ?? 'N/A',
       profilePath: map['profile_path'] ?? '',
       popularity: map['popularity']?.toDouble() ?? 0.0,
     );
