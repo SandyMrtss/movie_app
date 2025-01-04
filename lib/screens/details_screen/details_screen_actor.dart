@@ -1,4 +1,3 @@
-import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,6 +6,7 @@ import 'package:movie_app/api/api_service.dart';
 import 'package:movie_app/main.dart';
 import 'package:movie_app/models/actor.dart';
 import 'package:movie_app/controllers/actors_controller.dart';
+import 'package:movie_app/widgets/my_round_image.dart';
 import 'package:movie_app/widgets/my_tab_bar.dart';
 import 'package:movie_app/widgets/tab_builder.dart';
 
@@ -97,31 +97,7 @@ class DetailsScreenActor extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(16)),
-                      child: Image.network(
-                        Api.imageBaseUrl + actor.profilePath,
-                        height: Get.height/2,
-                        fit: BoxFit.fitHeight,
-                        loadingBuilder: (_, __, ___) {
-                          // ignore: no_wildcard_variable_uses
-                          if (___ == null) return __;
-                          return FadeShimmer(
-                            width: Get.width/2,
-                            height: Get.height/2,
-                            highlightColor: const Color(0xff22272f),
-                            baseColor: const Color(0xff20252d),
-                          );
-                        },
-                        errorBuilder: (_, __, ___) => const Align(
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.broken_image,
-                            size: 250,
-                          ),
-                        ),
-                      ),
-                    ),
+                    MyRoundImage(height: Get.height/2, width: Get.width/2.25, imageUrl: Api.imageBaseUrl + actor.profilePath,),
                     Expanded(
                       child:
                         Padding(

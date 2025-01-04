@@ -1,4 +1,3 @@
-import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -8,9 +7,10 @@ import 'package:movie_app/api/api.dart';
 import 'package:movie_app/controllers/bottom_navigator_controller.dart';
 import 'package:movie_app/controllers/my_search_controller.dart';
 import 'package:movie_app/models/movie.dart';
-import 'package:movie_app/widgets/infos.dart';
-import 'package:movie_app/widgets/search_box.dart';
+import 'package:movie_app/widgets/infography/infography_generic.dart';
+import 'package:movie_app/widgets/home_screen/search_box.dart';
 import 'package:movie_app/screens/details_screen/details_screen_movie.dart';
+import 'package:movie_app/widgets/my_round_image.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -132,29 +132,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(16),
-                            child: Image.network(
-                              Api.imageBaseUrl + movie.posterPath,
-                              height: 180,
-                              width: 120,
-                              fit: BoxFit.cover,
-                              errorBuilder: (_, __, ___) => const Icon(
-                                Icons.broken_image,
-                                size: 120,
-                              ),
-                              loadingBuilder: (_, __, ___) {
-                                // ignore: no_wildcard_variable_uses
-                                if (___ == null) return __;
-                                return const FadeShimmer(
-                                  width: 120,
-                                  height: 180,
-                                  highlightColor: Color(0xff22272f),
-                                  baseColor: Color(0xff20252d),
-                                );
-                              },
-                            ),
-                          ),
+                          MyRoundImage(height: 180, width: 120, imageUrl: Api.imageBaseUrl + movie.posterPath,),
                           const SizedBox(
                             width: 20,
                           ),

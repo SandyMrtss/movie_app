@@ -10,6 +10,7 @@ import 'package:movie_app/main.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/models/review.dart';
 import 'package:movie_app/utils/utils.dart';
+import 'package:movie_app/widgets/my_round_image.dart';
 import 'package:movie_app/widgets/my_tab_bar.dart';
 import 'package:movie_app/widgets/tab_builder.dart';
 
@@ -81,58 +82,13 @@ class DetailsScreenMovie extends StatelessWidget {
                 height: 330,
                 child: Stack(
                   children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(16),
-                      ),
-                      child: Image.network(
-                        Api.imageBaseUrl + movie.backdropPath,
-                        width: Get.width,
-                        height: 250,
-                        fit: BoxFit.cover,
-                        loadingBuilder: (_, __, ___) {
-                          // ignore: no_wildcard_variable_uses
-                          if (___ == null) return __;
-                          return FadeShimmer(
-                            width: Get.width,
-                            height: 250,
-                            highlightColor: const Color(0xff22272f),
-                            baseColor: const Color(0xff20252d),
-                          );
-                        },
-                        errorBuilder: (_, __, ___) => const Align(
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.broken_image,
-                            size: 250,
-                          ),
-                        ),
-                      ),
-                    ),
+                    MyRoundImage(height: 250, width: Get.width, imageUrl: Api.imageBaseUrl + movie.backdropPath),
                     Positioned(
                       left: 30,
                       bottom: 0,
                       child: Align(
                         alignment: Alignment.bottomLeft,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: Image.network(
-                            Api.imageBaseUrl + movie.posterPath,
-                            width: 110,
-                            height: 140,
-                            fit: BoxFit.cover,
-                            loadingBuilder: (_, __, ___) {
-                              // ignore: no_wildcard_variable_uses
-                              if (___ == null) return __;
-                              return const FadeShimmer(
-                                width: 110,
-                                height: 140,
-                                highlightColor: Color(0xff22272f),
-                                baseColor: Color(0xff20252d),
-                              );
-                            },
-                          ),
-                        ),
+                        child: MyRoundImage(height: 140, width: 110, imageUrl: Api.imageBaseUrl + movie.posterPath,)
                       ),
                     ),
                     Positioned(
