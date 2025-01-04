@@ -109,8 +109,9 @@ class DetailsScreenMovie extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(left: 30),
+                    Positioned(
+                      left: 30,
+                      bottom: 0,
                       child: Align(
                         alignment: Alignment.bottomLeft,
                         child: ClipRRect(
@@ -138,13 +139,18 @@ class DetailsScreenMovie extends StatelessWidget {
                       top: 255,
                       left: 155,
                       child: SizedBox(
-                        width: 230,
-                        child: Text(
+                        width: 340,
+                        child: Expanded(
+                          child: Text(
                           movie.title,
+                          textAlign: TextAlign.justify,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
                           ),
+                        ),
                         ),
                       ),
                     ),
@@ -152,8 +158,7 @@ class DetailsScreenMovie extends StatelessWidget {
                       top: 200,
                       right: 30,
                       child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 3),
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           color: const Color.fromRGBO(37, 40, 54, 0.52),
@@ -161,9 +166,7 @@ class DetailsScreenMovie extends StatelessWidget {
                         child: Row(
                           children: [
                             Icon(Icons.star_outline, color: Colors.amberAccent,),
-                            const SizedBox(
-                              width: 5,
-                            ),
+                            const SizedBox(width: 5,),
                             Text(
                               Utils.getRating(movie, MediaType.movie),
                               style: const TextStyle(
@@ -182,7 +185,7 @@ class DetailsScreenMovie extends StatelessWidget {
                 height: 10,
               ),
               Opacity(
-                opacity: .6,
+                opacity: .8,
                 child: SizedBox(
                   width: Get.width,
                   child: Row(
@@ -195,7 +198,7 @@ class DetailsScreenMovie extends StatelessWidget {
                             width: 5,
                           ),
                           Text(
-                            movie.releaseDate.split('/')[0],
+                            movie.releaseDate,
                             style: const TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 10,
@@ -206,7 +209,7 @@ class DetailsScreenMovie extends StatelessWidget {
                       const Text('|'),
                       Row(
                         children: [
-                          SvgPicture.asset('assets/Ticket.svg'),
+                          Icon(Icons.language, color: Colors.white, size: 15,),
                           const SizedBox(
                             width: 5,
                           ),
