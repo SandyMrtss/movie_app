@@ -38,13 +38,19 @@ class InfoActor extends StatelessWidget {
             const SizedBox(
               width: 5,
             ),
-            Text(
-              actor.placeOfBirth,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w300,
-              ),
-            ),
+           SizedBox(
+             width: 280,
+             child: Expanded(
+               child: Text(
+                 actor.placeOfBirth,
+                 overflow: TextOverflow.ellipsis,
+                 style: const TextStyle(
+                   fontSize: 16,
+                   fontWeight: FontWeight.w300,
+                 ),
+               ),
+             ),
+           )
           ],
         ),
         const SizedBox(height: 4,),
