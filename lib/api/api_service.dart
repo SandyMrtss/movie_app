@@ -101,12 +101,46 @@ class ApiService {
       http.Response response = await http.get(Uri.parse(
           '${Api.baseUrl}search/movie${Api.endUrl}&query=$query&include_adult=false'));
       var res = jsonDecode(response.body);
-      res['results'].forEach(
+      res['results'].take(20).forEach(
             (m) => movies.add(
           Movie.fromMap(m),
         ),
       );
       return movies;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<List<TvSeries>?> getSearchedTvSeries(String query) async {
+    List<TvSeries> tvSeries = [];
+    try {
+      http.Response response = await http.get(Uri.parse(
+          '${Api.baseUrl}search/tv${Api.endUrl}&query=$query&include_adult=false'));
+      var res = jsonDecode(response.body);
+      res['results'].take(20).forEach(
+            (s) => tvSeries.add(
+          TvSeries.fromMap(s),
+        ),
+      );
+      return tvSeries;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<List<Actor>?> getSearchedActors(String query) async {
+    List<Actor> actors = [];
+    try {
+      http.Response response = await http.get(Uri.parse(
+          '${Api.baseUrl}search/person${Api.endUrl}&query=$query&include_adult=false'));
+      var res = jsonDecode(response.body);
+      res['results'].take(20).forEach(
+            (a) => actors.add(
+          Actor.fromMap(a),
+        ),
+      );
+      return getActorsInfo(actors);
     } catch (e) {
       return null;
     }
