@@ -15,7 +15,7 @@ class HomeScreenMovies extends StatelessWidget {
   HomeScreenMovies({super.key});
 
   final MoviesController controller = Get.put(MoviesController());
-  final MySearchController searchController = Get.put(MySearchController());
+  final MySearchController movieSearchController = Get.put(MySearchController());
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -41,13 +41,12 @@ class HomeScreenMovies extends StatelessWidget {
               height: 24,
             ),
             SearchBox(
-              onSumbit: () {
-                String search =
-                    Get.find<MySearchController>().searchController.text;
-                Get.find<MySearchController>().searchController.text = '';
-                Get.find<MySearchController>().search(search);
-                Get.find<BottomNavigatorController>().setIndex(1);
-                FocusManager.instance.primaryFocus?.unfocus();
+              onSubmit: () {
+                 String search = Get.find<MySearchController>().searchTextController.text;
+                 Get.find<MySearchController>().searchTextController.text = '';
+                 Get.find<MySearchController>().search(search, MediaType.movie);
+                 Get.find<BottomNavigatorController>().goToSearchScreen();
+                 FocusManager.instance.primaryFocus?.unfocus();
               },
             ),
             const SizedBox(

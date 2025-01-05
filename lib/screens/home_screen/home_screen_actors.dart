@@ -47,12 +47,11 @@ class HomeScreenActors extends StatelessWidget {
               height: 24,
             ),
             SearchBox(
-              onSumbit: () {
-                String search =
-                    Get.find<MySearchController>().searchController.text;
-                Get.find<MySearchController>().searchController.text = '';
-                Get.find<MySearchController>().search(search);
-                Get.find<BottomNavigatorController>().setIndex(1);
+              onSubmit: () {
+                String search = Get.find<MySearchController>().searchTextController.text;
+                Get.find<MySearchController>().searchTextController.text = '';
+                Get.find<MySearchController>().search(search, MediaType.actor);
+                Get.find<BottomNavigatorController>().goToSearchScreen();
                 FocusManager.instance.primaryFocus?.unfocus();
               },
             ),
@@ -63,18 +62,19 @@ class HomeScreenActors extends StatelessWidget {
               (() => controller.isLoading.value
                   ? const CircularProgressIndicator()
                   : SizedBox(
-                height: 300,
-                child: ListView.separated(
-                  itemCount: controller.mainPopularActors.length,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  separatorBuilder: (_, __) => const SizedBox(width: 24),
-                  itemBuilder: (_, index) => TopRatedItem(
-                      item: controller.mainPopularActors[index],
-                      index: index + 1,
-                      mediaType: MediaType.actor,)
-                ),
-              )),
+                      height: 300,
+                      child: ListView.separated(
+                        itemCount: controller.mainPopularActors.length,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        separatorBuilder: (_, __) => const SizedBox(width: 24),
+                        itemBuilder: (_, index) => TopRatedItem(
+                            item: controller.mainPopularActors[index],
+                            index: index + 1,
+                            mediaType: MediaType.actor,)
+                      ),
+                  )
+              ),
             ),
             DefaultTabController(
               length: 2,

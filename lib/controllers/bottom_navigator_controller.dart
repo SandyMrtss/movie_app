@@ -16,4 +16,5 @@ class BottomNavigatorController extends GetxController {
   ];
   var index = 0.obs;
   void setIndex(i) => index.value = i;
+  void goToSearchScreen() => index.value = 3;
 }

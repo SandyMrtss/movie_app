@@ -1,32 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import 'package:movie_app/controllers/my_search_controller.dart';
 
 class SearchBox extends StatelessWidget {
   const SearchBox({
-    required this.onSumbit,
+    required this.onSubmit,
     super.key,
   });
-  final VoidCallback onSumbit;
+  final VoidCallback onSubmit;
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: Get.find<MySearchController>().searchController,
+      controller: Get.find<MySearchController>().searchTextController,
       style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         suffixIcon: IconButton(
           icon: Transform(
             alignment: Alignment.center,
             transform: Matrix4.rotationY(3.14),
-            child: SvgPicture.asset(
-              'assets/Search.svg',
-              width: 22,
-              height: 22,
-            ),
+            child:
+            Icon(Icons.search, size: 22, color: Colors.white,)
           ),
-          onPressed: () => onSumbit(),
+          onPressed: () => onSubmit(),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16.0),
@@ -49,7 +45,7 @@ class SearchBox extends StatelessWidget {
         fillColor: const Color(0xFF3A3F47),
         hintText: 'Search',
       ),
-      onSubmitted: (a) => onSumbit(),
+      onSubmitted: (a) => onSubmit(),
     );
   }
 }
