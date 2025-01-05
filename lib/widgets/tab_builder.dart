@@ -24,7 +24,7 @@ class TabBuilder extends StatelessWidget {
     switch(mediaType) {
       case MediaType.movie:
          futureType = future as Future<List<Movie>?>;
-      case (MediaType.tv):
+      case (MediaType.TVSeries):
         futureType = future as Future<List<TvSeries>?>;
       case (MediaType.actor):
         futureType = future as Future<List<Actor>?>;

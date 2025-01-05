@@ -18,7 +18,7 @@ class MySearchController extends GetxController {
     switch(mediaType){
       case(MediaType.movie):
         results.value = (await ApiService.getSearchedMovies(query)) ?? [];
-      case MediaType.tv:
+      case MediaType.TVSeries:
         results.value = (await ApiService.getSearchedTvSeries(query)) ?? [];
       case MediaType.actor:
         results.value = (await ApiService.getSearchedActors(query)) ?? [];

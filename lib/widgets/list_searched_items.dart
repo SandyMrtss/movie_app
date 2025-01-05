@@ -35,7 +35,7 @@ class ListSearchedItems extends StatelessWidget {
                   case(MediaType.movie):
                     Movie movie = obj as Movie;
                     Get.to(DetailsScreenMovie(movie: movie));
-                  case(MediaType.tv):
+                  case(MediaType.TVSeries):
                     TvSeries tvSeries = obj as TvSeries;
                     Get.to(DetailsScreenSeries(tvSeries: tvSeries));
                   case(MediaType.actor):

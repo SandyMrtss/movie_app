@@ -44,7 +44,7 @@ class HomeScreenSeries extends StatelessWidget {
               onSubmit: () {
                 String search =Get.find<MySearchController>().searchTextController.text;
                 Get.find<MySearchController>().searchTextController.text = '';
-                Get.find<MySearchController>().search(search, MediaType.tv);
+                Get.find<MySearchController>().search(search, MediaType.TVSeries);
                 Get.find<BottomNavigatorController>().goToSearchScreen();
                 FocusManager.instance.primaryFocus?.unfocus();
               },
@@ -65,7 +65,7 @@ class HomeScreenSeries extends StatelessWidget {
                   itemBuilder: (_, index) => TopRatedItem(
                       item: controller.mainTopRatedTvSeries[index],
                       index: index + 1,
-                      mediaType: MediaType.tv,),
+                      mediaType: MediaType.TVSeries,),
                 ),
               )),
             ),
@@ -80,18 +80,18 @@ class HomeScreenSeries extends StatelessWidget {
                     child: TabBarView(children: [
                       TabBuilder(
                         future: ApiService.getCustomTvSeries(
-                            'airing_today'), mediaType: MediaType.tv,
+                            'airing_today'), mediaType: MediaType.TVSeries,
                       ),
                       TabBuilder(
                         future: ApiService.getCustomTvSeries(
-                            'on_the_air'), mediaType: MediaType.tv,
+                            'on_the_air'), mediaType: MediaType.TVSeries,
                       ),
                       TabBuilder(
                         future: ApiService.getCustomTvSeries(
-                            'top_rated'),mediaType: MediaType.tv,
+                            'top_rated'),mediaType: MediaType.TVSeries,
                       ),
                       TabBuilder(
-                        future: ApiService.getPopularTvSeries(false), mediaType: MediaType.tv,
+                        future: ApiService.getPopularTvSeries(false), mediaType: MediaType.TVSeries,
                       ),
                     ]),
                   ),

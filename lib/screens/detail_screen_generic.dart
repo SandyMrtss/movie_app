@@ -14,7 +14,7 @@ class DetailsScreenGeneric{
       case MediaType.movie:
         Movie movie = object as Movie;
         return DetailsScreenMovie(movie: movie,);
-      case (MediaType.tv):
+      case (MediaType.TVSeries):
         TvSeries tvSeries = object as TvSeries;
         return DetailsScreenSeries(tvSeries: tvSeries,);
       case (MediaType.actor):

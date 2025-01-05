@@ -124,7 +124,7 @@ class DetailsScreenSeries extends StatelessWidget {
                             Icon(Icons.star_outline, color: Colors.amberAccent,),
                             const SizedBox(width: 5,),
                             Text(
-                              Utils.getRating(tvSeries, MediaType.tv),
+                              Utils.getRating(tvSeries, MediaType.TVSeries),
                               style: const TextStyle(
                                 fontWeight: FontWeight.w400,
                                 color: Colors.amberAccent,
@@ -186,7 +186,7 @@ class DetailsScreenSeries extends StatelessWidget {
                             width: 5,
                           ),
                           Text(
-                            Utils.getGenres(tvSeries, MediaType.tv),
+                            Utils.getGenres(tvSeries, MediaType.TVSeries),
                             style: const TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 10,

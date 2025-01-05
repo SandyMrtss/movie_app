@@ -76,7 +76,7 @@ class Utils{
       case MediaType.movie:
         Movie movie = object as Movie;
         return url + movie.posterPath;
-      case (MediaType.tv):
+      case (MediaType.TVSeries):
         TvSeries tvSeries = object as TvSeries;
         return url + tvSeries.posterPath;
       case (MediaType.actor):
@@ -90,7 +90,7 @@ class Utils{
       case MediaType.movie:
         Movie movie = object as Movie;
         return movie.title;
-      case (MediaType.tv):
+      case (MediaType.TVSeries):
         TvSeries tvSeries = object as TvSeries;
         return tvSeries.name;
       case (MediaType.actor):
@@ -106,7 +106,7 @@ class Utils{
         return movie.voteAverage == 0.0
           ? 'N/A'
         : movie.voteAverage.toString();
-      case (MediaType.tv):
+      case (MediaType.TVSeries):
         TvSeries tvSeries = object as TvSeries;
         return tvSeries.voteAverage == 0.0
             ? 'N/A'
@@ -122,7 +122,7 @@ class Utils{
       case MediaType.movie:
         Movie movie = object as Movie;
         return movie.releaseDate.split('-')[0];
-      case (MediaType.tv):
+      case (MediaType.TVSeries):
         TvSeries tvSeries = object as TvSeries;
         return tvSeries.firstAirDate.split('-')[0];
       case (MediaType.actor):
@@ -154,7 +154,7 @@ class Utils{
       case MediaType.movie:
         Movie movie = object as Movie;
         return InfoMovie(movie: movie);
-      case (MediaType.tv):
+      case (MediaType.TVSeries):
         TvSeries tvSeries = object as TvSeries;
         return InfoTvSeries(tvSeries: tvSeries);
       case (MediaType.actor):

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:movie_app/main.dart';
-import 'package:movie_app/api/api.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/models/tv_series.dart';
 import 'package:movie_app/models/actor.dart';
@@ -25,7 +24,7 @@ class FavouritesList extends StatelessWidget {
     switch(mediaType) {
       case MediaType.movie:
         listType = list as List<Movie>;
-      case (MediaType.tv):
+      case (MediaType.TVSeries):
         listType = list as List<TvSeries>;
       case (MediaType.actor):
         listType = list as List<Actor>;

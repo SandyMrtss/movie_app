@@ -181,7 +181,7 @@ class DetailsScreenActor extends StatelessWidget {
                       child: TabBarView(
                           children: [
                             TabBuilder(future: ApiService.getActorMovies(actor.id.toString()), mediaType: MediaType.movie,),
-                            TabBuilder(future: ApiService.getActorTvSeries(actor.id.toString()), mediaType: MediaType.tv),
+                            TabBuilder(future: ApiService.getActorTvSeries(actor.id.toString()), mediaType: MediaType.TVSeries),
                           ]
                       ),
                     ),

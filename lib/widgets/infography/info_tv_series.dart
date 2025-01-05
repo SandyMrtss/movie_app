@@ -22,7 +22,7 @@ class InfoTvSeries extends StatelessWidget {
               width: 5,
             ),
             Text(
-              Utils.getRating(tvSeries, MediaType.tv),
+              Utils.getRating(tvSeries, MediaType.TVSeries),
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,
@@ -39,7 +39,7 @@ class InfoTvSeries extends StatelessWidget {
               width: 5,
             ),
             Text(
-              Utils.getGenres(tvSeries, MediaType.tv),
+              Utils.getGenres(tvSeries, MediaType.TVSeries),
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,
@@ -55,7 +55,7 @@ class InfoTvSeries extends StatelessWidget {
               width: 5,
             ),
             Text(
-              Utils.getDate(tvSeries, MediaType.tv),
+              Utils.getDate(tvSeries, MediaType.TVSeries),
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,

@@ -7,7 +7,7 @@ import 'package:movie_app/screens/main.dart';
 void main() {
   runApp(const MyApp());
 }
-enum MediaType {movie,tv,actor}
+enum MediaType {movie,TVSeries,actor}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

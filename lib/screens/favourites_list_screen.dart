@@ -82,7 +82,7 @@ class FavouritesListScreen extends StatelessWidget {
                           nothingInListText('TV series')
                         else
                           FavouritesList(
-                            list: Get.find<SeriesController>().favouritesList, mediaType: MediaType.tv,
+                            list: Get.find<SeriesController>().favouritesList, mediaType: MediaType.TVSeries,
                         ),
                       ]
                     ),
