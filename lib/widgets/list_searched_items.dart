@@ -32,13 +32,13 @@ class ListSearchedItems extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               switch(mediaType) {
-                  case(MediaType.movie):
+                  case(MediaType.Movies):
                     Movie movie = obj as Movie;
                     Get.to(DetailsScreenMovie(movie: movie));
                   case(MediaType.TVSeries):
                     TvSeries tvSeries = obj as TvSeries;
                     Get.to(DetailsScreenSeries(tvSeries: tvSeries));
-                  case(MediaType.actor):
+                  case(MediaType.Actors):
                     Actor actor = obj as Actor;
                     Get.to(DetailsScreenActor(actor: actor));
               }

@@ -15,7 +15,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  MediaType? _selectedMedia = MediaType.movie;
+  MediaType? _selectedMedia = MediaType.Movies;
 
   @override
   Widget build(BuildContext context) {

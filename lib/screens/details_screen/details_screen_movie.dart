@@ -124,7 +124,7 @@ class DetailsScreenMovie extends StatelessWidget {
                             Icon(Icons.star_outline, color: Colors.amberAccent,),
                             const SizedBox(width: 5,),
                             Text(
-                              Utils.getRating(movie, MediaType.movie),
+                              Utils.getRating(movie, MediaType.Movies),
                               style: const TextStyle(
                                 fontWeight: FontWeight.w400,
                                 color: Colors.amberAccent,
@@ -170,7 +170,7 @@ class DetailsScreenMovie extends StatelessWidget {
                             width: 5,
                           ),
                           Text(
-                            Utils.getGenres(movie, MediaType.movie),
+                            Utils.getGenres(movie, MediaType.Movies),
                             style: const TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 10,
@@ -287,7 +287,7 @@ class DetailsScreenMovie extends StatelessWidget {
                               }
                             },
                           ),
-                          TabBuilder(future: ApiService.getMoviesCast(movie.id.toString()), mediaType: MediaType.actor,),
+                          TabBuilder(future: ApiService.getMoviesCast(movie.id.toString()), mediaType: MediaType.Actors,),
                         ]),
                       ),
                     ],

@@ -22,11 +22,11 @@ class TabBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     Future<List<Object>?> futureType;
     switch(mediaType) {
-      case MediaType.movie:
+      case MediaType.Movies:
          futureType = future as Future<List<Movie>?>;
       case (MediaType.TVSeries):
         futureType = future as Future<List<TvSeries>?>;
-      case (MediaType.actor):
+      case (MediaType.Actors):
         futureType = future as Future<List<Actor>?>;
     }
     return Padding(

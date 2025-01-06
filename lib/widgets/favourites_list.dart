@@ -22,11 +22,11 @@ class FavouritesList extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Object> listType;
     switch(mediaType) {
-      case MediaType.movie:
+      case MediaType.Movies:
         listType = list as List<Movie>;
       case (MediaType.TVSeries):
         listType = list as List<TvSeries>;
-      case (MediaType.actor):
+      case (MediaType.Actors):
         listType = list as List<Actor>;
     }
     return Padding(

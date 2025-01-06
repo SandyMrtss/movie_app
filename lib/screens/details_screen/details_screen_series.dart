@@ -302,7 +302,7 @@ class DetailsScreenSeries extends StatelessWidget {
                               }
                             },
                           ),
-                          TabBuilder(future: ApiService.getTvSeriesCast(tvSeries.id.toString()), mediaType: MediaType.actor,),
+                          TabBuilder(future: ApiService.getTvSeriesCast(tvSeries.id.toString()), mediaType: MediaType.Actors,),
                         ]),
                       ),
                     ],

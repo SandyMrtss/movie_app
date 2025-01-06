@@ -11,13 +11,13 @@ class DetailsScreenGeneric{
 
   static Widget getDetailScreen(Object object, MediaType mediaType){
     switch(mediaType) {
-      case MediaType.movie:
+      case MediaType.Movies:
         Movie movie = object as Movie;
         return DetailsScreenMovie(movie: movie,);
       case (MediaType.TVSeries):
         TvSeries tvSeries = object as TvSeries;
         return DetailsScreenSeries(tvSeries: tvSeries,);
-      case (MediaType.actor):
+      case (MediaType.Actors):
         Actor actor = object as Actor;
         return DetailsScreenActor(actor: actor,);
     }

@@ -22,7 +22,7 @@ class InfoActor extends StatelessWidget {
               width: 5,
             ),
             Text(
-              Utils.getRating(actor, MediaType.actor),
+              Utils.getRating(actor, MediaType.Actors),
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,
@@ -39,7 +39,7 @@ class InfoActor extends StatelessWidget {
               width: 5,
             ),
            SizedBox(
-             width: 280,
+             width: 270,
              child: Expanded(
                child: Text(
                  actor.placeOfBirth,
@@ -61,7 +61,7 @@ class InfoActor extends StatelessWidget {
               width: 5,
             ),
             Text(
-              Utils.getDate(actor, MediaType.actor),
+              Utils.getDate(actor, MediaType.Actors),
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,

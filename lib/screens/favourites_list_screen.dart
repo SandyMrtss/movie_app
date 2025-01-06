@@ -70,13 +70,13 @@ class FavouritesListScreen extends StatelessWidget {
                           nothingInListText('actors')
                         else
                           FavouritesList(
-                            list: Get.find<ActorsController>().favouritesList, mediaType: MediaType.actor,
+                            list: Get.find<ActorsController>().favouritesList, mediaType: MediaType.Actors,
                           ),
                         if (Get.find<MoviesController>().favouritesList.isEmpty)
                             nothingInListText('movies')
                         else
                         FavouritesList(
-                          list: Get.find<MoviesController>().favouritesList, mediaType: MediaType.movie,
+                          list: Get.find<MoviesController>().favouritesList, mediaType: MediaType.Movies,
                         ),
                         if (Get.find<SeriesController>().favouritesList.isEmpty)
                           nothingInListText('TV series')

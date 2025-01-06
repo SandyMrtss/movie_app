@@ -44,7 +44,7 @@ class HomeScreenMovies extends StatelessWidget {
               onSubmit: () {
                  String search = Get.find<MySearchController>().searchTextController.text;
                  Get.find<MySearchController>().searchTextController.text = '';
-                 Get.find<MySearchController>().search(search, MediaType.movie);
+                 Get.find<MySearchController>().search(search, MediaType.Movies);
                  Get.find<BottomNavigatorController>().goToSearchScreen();
                  FocusManager.instance.primaryFocus?.unfocus();
               },
@@ -65,7 +65,7 @@ class HomeScreenMovies extends StatelessWidget {
                   itemBuilder: (_, index) => TopRatedItem(
                       item: controller.mainTopRatedMovies[index],
                       index: index + 1,
-                      mediaType: MediaType.movie,),
+                      mediaType: MediaType.Movies,),
                 ),
               )),
             ),
@@ -80,18 +80,18 @@ class HomeScreenMovies extends StatelessWidget {
                     child: TabBarView(children: [
                       TabBuilder(
                         future: ApiService.getCustomMovies(
-                            'now_playing'), mediaType: MediaType.movie,
+                            'now_playing'), mediaType: MediaType.Movies,
                       ),
                       TabBuilder(
                         future: ApiService.getCustomMovies(
-                            'upcoming'), mediaType: MediaType.movie,
+                            'upcoming'), mediaType: MediaType.Movies,
                       ),
                       TabBuilder(
                         future: ApiService.getCustomMovies(
-                            'top_rated'), mediaType: MediaType.movie,
+                            'top_rated'), mediaType: MediaType.Movies,
                       ),
                       TabBuilder(
-                          future: ApiService.getPopularMovies(false), mediaType: MediaType.movie,
+                          future: ApiService.getPopularMovies(false), mediaType: MediaType.Movies,
                       ),
                     ]),
                   ),

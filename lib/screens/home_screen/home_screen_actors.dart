@@ -50,7 +50,7 @@ class HomeScreenActors extends StatelessWidget {
               onSubmit: () {
                 String search = Get.find<MySearchController>().searchTextController.text;
                 Get.find<MySearchController>().searchTextController.text = '';
-                Get.find<MySearchController>().search(search, MediaType.actor);
+                Get.find<MySearchController>().search(search, MediaType.Actors);
                 Get.find<BottomNavigatorController>().goToSearchScreen();
                 FocusManager.instance.primaryFocus?.unfocus();
               },
@@ -71,7 +71,7 @@ class HomeScreenActors extends StatelessWidget {
                         itemBuilder: (_, index) => TopRatedItem(
                             item: controller.mainPopularActors[index],
                             index: index + 1,
-                            mediaType: MediaType.actor,)
+                            mediaType: MediaType.Actors,)
                       ),
                   )
               ),
@@ -86,10 +86,10 @@ class HomeScreenActors extends StatelessWidget {
                     height: 400,
                     child: TabBarView(children: [
                       TabBuilder(
-                        future: ApiService.getPopularActors(false), mediaType: MediaType.actor,
+                        future: ApiService.getPopularActors(false), mediaType: MediaType.Actors,
                       ),
                       TabBuilder(
-                        future: ApiService.getTrendingActors() , mediaType: MediaType.actor,
+                        future: ApiService.getTrendingActors() , mediaType: MediaType.Actors,
                       ),
                     ]),
                   ),

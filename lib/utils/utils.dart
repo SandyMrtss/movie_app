@@ -17,11 +17,11 @@ class Utils{
 
   static String getGenres(Object item, MediaType mediaType) {
     List<int> genres = [];
-    if(mediaType == MediaType.actor){
+    if(mediaType == MediaType.Actors){
       return '';
     }
     else {
-      if(mediaType == MediaType.movie){
+      if(mediaType == MediaType.Movies){
       Movie movie = item as Movie;
       genres = movie.genreIds;
       }
@@ -73,13 +73,13 @@ class Utils{
   static String getMainImageUrl(Object object, MediaType mediaType){
     String url = Api.imageBaseUrl;
     switch(mediaType){
-      case MediaType.movie:
+      case MediaType.Movies:
         Movie movie = object as Movie;
         return url + movie.posterPath;
       case (MediaType.TVSeries):
         TvSeries tvSeries = object as TvSeries;
         return url + tvSeries.posterPath;
-      case (MediaType.actor):
+      case (MediaType.Actors):
         Actor actor = object as Actor;
         return url + actor.profilePath;
     }
@@ -87,13 +87,13 @@ class Utils{
 
   static String getMainName(Object object, MediaType mediaType){
     switch(mediaType){
-      case MediaType.movie:
+      case MediaType.Movies:
         Movie movie = object as Movie;
         return movie.title;
       case (MediaType.TVSeries):
         TvSeries tvSeries = object as TvSeries;
         return tvSeries.name;
-      case (MediaType.actor):
+      case (MediaType.Actors):
         Actor actor = object as Actor;
         return actor.name;
     }
@@ -101,7 +101,7 @@ class Utils{
 
   static String getRating(Object object, MediaType mediaType){
     switch(mediaType){
-      case MediaType.movie:
+      case MediaType.Movies:
         Movie movie = object as Movie;
         return movie.voteAverage == 0.0
           ? 'N/A'
@@ -111,7 +111,7 @@ class Utils{
         return tvSeries.voteAverage == 0.0
             ? 'N/A'
             : tvSeries.voteAverage.toString();
-      case (MediaType.actor):
+      case (MediaType.Actors):
         Actor actor = object as Actor;
         return actor.popularity.toString();
     }
@@ -119,13 +119,13 @@ class Utils{
 
   static String getDate(Object object, MediaType mediaType){
     switch(mediaType){
-      case MediaType.movie:
+      case MediaType.Movies:
         Movie movie = object as Movie;
         return movie.releaseDate.split('-')[0];
       case (MediaType.TVSeries):
         TvSeries tvSeries = object as TvSeries;
         return tvSeries.firstAirDate.split('-')[0];
-      case (MediaType.actor):
+      case (MediaType.Actors):
         Actor actor = object as Actor;
         String date = actor.birthday;
         if(actor.deathDay != ''){
@@ -151,13 +151,13 @@ class Utils{
 
   static Widget getInfography(Object object, MediaType mediaType){
     switch(mediaType){
-      case MediaType.movie:
+      case MediaType.Movies:
         Movie movie = object as Movie;
         return InfoMovie(movie: movie);
       case (MediaType.TVSeries):
         TvSeries tvSeries = object as TvSeries;
         return InfoTvSeries(tvSeries: tvSeries);
-      case (MediaType.actor):
+      case (MediaType.Actors):
         Actor actor = object as Actor;
         return InfoActor(actor: actor);
     }

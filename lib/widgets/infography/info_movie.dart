@@ -22,7 +22,7 @@ class InfoMovie extends StatelessWidget {
               width: 5,
             ),
             Text(
-              Utils.getRating(movie, MediaType.movie),
+              Utils.getRating(movie, MediaType.Movies),
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,
@@ -39,7 +39,7 @@ class InfoMovie extends StatelessWidget {
               width: 5,
             ),
             Text(
-              Utils.getGenres(movie, MediaType.movie),
+              Utils.getGenres(movie, MediaType.Movies),
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,
@@ -55,7 +55,7 @@ class InfoMovie extends StatelessWidget {
               width: 5,
             ),
             Text(
-              Utils.getDate(movie, MediaType.movie),
+              Utils.getDate(movie, MediaType.Movies),
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,

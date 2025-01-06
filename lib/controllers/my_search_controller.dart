@@ -8,7 +8,7 @@ class MySearchController extends GetxController {
   var searchText = ''.obs;
   var results = <Object>[].obs;
   var isLoading = false.obs;
-  MediaType currentObject = MediaType.movie;
+  MediaType currentObject = MediaType.Movies;
   bool hasSearched = false;
 
   void search(String query, MediaType mediaType) async {
@@ -16,11 +16,11 @@ class MySearchController extends GetxController {
     hasSearched = true;
     currentObject = mediaType;
     switch(mediaType){
-      case(MediaType.movie):
+      case(MediaType.Movies):
         results.value = (await ApiService.getSearchedMovies(query)) ?? [];
       case MediaType.TVSeries:
         results.value = (await ApiService.getSearchedTvSeries(query)) ?? [];
-      case MediaType.actor:
+      case MediaType.Actors:
         results.value = (await ApiService.getSearchedActors(query)) ?? [];
     }
     isLoading.value = false;

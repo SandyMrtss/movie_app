@@ -13,7 +13,7 @@ class NameLabel extends StatelessWidget {
   final MediaType mediaType;
   @override
   Widget build(BuildContext context) {
-    if(mediaType == MediaType.actor){
+    if(mediaType == MediaType.Actors){
       return Expanded(
         child:
         Container(
