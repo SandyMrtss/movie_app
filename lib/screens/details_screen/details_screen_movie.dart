@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import 'package:movie_app/api/api.dart';
@@ -7,10 +6,10 @@ import 'package:movie_app/api/api_service.dart';
 import 'package:movie_app/controllers/movies_controller.dart';
 import 'package:movie_app/main.dart';
 import 'package:movie_app/models/movie.dart';
-import 'package:movie_app/models/review.dart';
 import 'package:movie_app/utils/utils.dart';
 import 'package:movie_app/widgets/my_round_image.dart';
 import 'package:movie_app/widgets/my_tab_bar.dart';
+import 'package:movie_app/widgets/review_list.dart';
 import 'package:movie_app/widgets/tab_builder.dart';
 
 class DetailsScreenMovie extends StatelessWidget {
@@ -193,88 +192,7 @@ class DetailsScreenMovie extends StatelessWidget {
                               style: const TextStyle(fontSize: 15,fontWeight: FontWeight.w200,),
                             ),
                           ),
-                          FutureBuilder<List<Review>?>(
-                            future: ApiService.getMovieReviews(movie.id.toString()),
-                            builder: (_, snapshot) {
-                              if (snapshot.hasData) {
-                                return snapshot.data!.isEmpty
-                                    ? const Padding(
-                                  padding: EdgeInsets.only(top: 30.0),
-                                  child: Text(
-                                    'No reviews available',
-                                    textAlign: TextAlign.center,
-                                  ),
-                                )
-                                    : ListView.builder(
-                                  itemCount: snapshot.data!.length,
-                                  itemBuilder: (_, index) => Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Column(
-                                          children: [
-                                            SvgPicture.asset(
-                                              'assets/avatar.svg',
-                                              height: 50,
-                                              width: 50,
-                                              // fit: BoxFit.cover,
-                                            ),
-                                            const SizedBox(
-                                              height: 15,
-                                            ),
-                                            Text(
-                                              snapshot.data![index].rating
-                                                  .toString(),
-                                              style: const TextStyle(
-                                                color: Color(0xff0296E5),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              snapshot
-                                                  .data![index].author,
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                fontWeight:
-                                                FontWeight.w400,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
-                                            SizedBox(
-                                              width: 245,
-                                              child: Text(snapshot
-                                                  .data![index].comment,
-                                                style: const TextStyle(
-                                                  fontSize: 8,
-                                                  fontWeight:
-                                                  FontWeight.w400,
-                                                ),),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              } else {
-                                return const Center(
-                                  child: Text('Wait...'),
-                                );
-                              }
-                            },
-                          ),
+                          ReviewList(id: movie.id.toString(), mediaType: MediaType.Movies),
                           TabBuilder(future: ApiService.getMoviesCast(movie.id.toString()), mediaType: MediaType.Actors,),
                         ]),
                       ),

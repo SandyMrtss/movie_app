@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:movie_app/api/api.dart';
 import 'package:movie_app/api/api_end_points.dart';
+import 'package:movie_app/main.dart';
 import 'package:movie_app/models/actor.dart';
 import 'package:movie_app/models/movie.dart';
 import 'package:movie_app/models/review.dart';
@@ -146,14 +147,22 @@ class ApiService {
     }
   }
 
-  static Future<List<Review>?> getMovieReviews(String movieId) async {
+  static Future<List<Review>?> getReviews(String id, MediaType mediaType) async {
     List<Review> reviews = [];
     try {
-      http.Response response = await http.get(Uri.parse(
-          '${Api.baseUrl}${ApiEndPoints.movieReviews(movieId)}${Api.endUrl}'));
+      http.Response response;
+      if(mediaType == MediaType.Actors){
+        return null;
+      }
+      else if(mediaType == MediaType.Movies){
+        response = await http.get(Uri.parse('${Api.baseUrl}${ApiEndPoints.movieReviews(id)}${Api.endUrl}'));
+      }
+      else {
+        response = await http.get(Uri.parse('${Api.baseUrl}${ApiEndPoints.tvSeriesReviews(id)}${Api.endUrl}'));
+      }
       var res = jsonDecode(response.body);
       res['results'].forEach(
-            (r) {
+        (r) {
           reviews.add(
             Review.fromMap(r),
           );
@@ -165,22 +174,6 @@ class ApiService {
     }
   }
 
-  static Future<List<Review>?> getTvSeriesReviews(String tvSeriesId) async {
-    List<Review> reviews = [];
-    try {
-      http.Response response = await http.get(Uri.parse(
-          '${Api.baseUrl}${ApiEndPoints.tvSeriesReviews(tvSeriesId)}${Api.endUrl}'));
-      var res = jsonDecode(response.body);
-      res['results'].forEach(
-            (r) {
-          reviews.add(Review.fromMap(r),);
-        },
-      );
-      return reviews;
-    } catch (e) {
-      return null;
-    }
-  }
   static Future<List<Actor>?> getMoviesCast(String movieId) async {
     List<Actor> actors = [];
     try {
