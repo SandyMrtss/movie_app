@@ -45,10 +45,7 @@ class DetailsScreenSeries extends StatelessWidget {
                     Expanded(
                       child: Text(
                         tvSeries.originalName,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 23,
-                        ),
+                        style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 23,),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -62,12 +59,12 @@ class DetailsScreenSeries extends StatelessWidget {
                         icon: Obx(
                               () =>
                           Get.find<SeriesController>().isInFavouritesList(tvSeries)
-                              ? const Icon(
+                          ? const Icon(
                             Icons.favorite,
                             color: Colors.yellow,
                             size: 33,
                           )
-                              : const Icon(
+                          : const Icon(
                             Icons.favorite_outline,
                             color: Colors.white,
                             size: 33,
@@ -102,10 +99,7 @@ class DetailsScreenSeries extends StatelessWidget {
                             textAlign: TextAlign.justify,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                          ),
+                            style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w500,),
                           ),
                         ),
                       ),
@@ -125,10 +119,7 @@ class DetailsScreenSeries extends StatelessWidget {
                             const SizedBox(width: 5,),
                             Text(
                               Utils.getRating(tvSeries, MediaType.TVSeries),
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w400,
-                                color: Colors.amberAccent,
-                              ),
+                              style: const TextStyle(fontWeight: FontWeight.w400, color: Colors.amberAccent,),
                             ),
                           ],
                         ),
@@ -145,52 +136,40 @@ class DetailsScreenSeries extends StatelessWidget {
                 child: SizedBox(
                   width: Get.width,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
                         children: [
                           Icon(Icons.calendar_today_outlined, color: Colors.white, size: 15,),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          const SizedBox(width: 4,),
                           Text(
                             tvSeries.firstAirDate,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 10,
-                            ),
+                            style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,),
                           ),
                         ],
                       ),
-                      const Text('|'),
+                      const SizedBox(width: 5,),
+                      const Text('|', style: TextStyle(fontSize: 15, ),),
+                      const SizedBox(width: 5,),
                       Row(
                         children: [
-                          Icon(Icons.location_pin, color: Colors.white, size: 15,),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          Icon(Icons.location_pin, color: Colors.white, size: 20,),
+                          const SizedBox(width: 4,),
                           Text(
                             Utils.getOriginCountry(tvSeries),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 10,
-                            ),
+                            style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,),
                           ),
                         ],
                       ),
-                      const Text('|'),
-                      Row(
+                      const SizedBox(width: 5,),
+                      const Text('|', style: TextStyle(fontSize: 15, ),),
+                      const SizedBox(width: 5,),                      Row(
                         children: [
-                          Icon(Icons.language, color: Colors.white, size: 15,),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          Icon(Icons.language, color: Colors.white, size: 20,),
+                          const SizedBox(width: 4,),
                           Text(
                             Utils.getGenres(tvSeries, MediaType.TVSeries),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 10,
-                            ),
+                            style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,),
                           ),
                         ],
                       ),

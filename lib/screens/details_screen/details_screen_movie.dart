@@ -1,4 +1,3 @@
-import 'package:fade_shimmer/fade_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -145,36 +144,28 @@ class DetailsScreenMovie extends StatelessWidget {
                 child: SizedBox(
                   width: Get.width,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
                         children: [
                           Icon(Icons.calendar_today_outlined, color: Colors.white, size: 15,),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          const SizedBox(width: 4,),
                           Text(
                             movie.releaseDate,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 10,
-                            ),
+                            style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,),
                           ),
                         ],
                       ),
-                      const Text('|'),
+                      const SizedBox(width: 5,),
+                      const Text('|', style: TextStyle(fontSize: 15, ),),
+                      const SizedBox(width: 5,),
                       Row(
                         children: [
-                          Icon(Icons.language, color: Colors.white, size: 15,),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          Icon(Icons.language, color: Colors.white, size: 20,),
+                          const SizedBox(width: 4,),
                           Text(
                             Utils.getGenres(movie, MediaType.Movies),
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 10,
-                            ),
+                            style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,),
                           ),
                         ],
                       ),
@@ -199,10 +190,7 @@ class DetailsScreenMovie extends StatelessWidget {
                             child: Text(
                               movie.overview,
                               textAlign: TextAlign.justify,
-                              style: const TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w200,
-                              ),
+                              style: const TextStyle(fontSize: 15,fontWeight: FontWeight.w200,),
                             ),
                           ),
                           FutureBuilder<List<Review>?>(

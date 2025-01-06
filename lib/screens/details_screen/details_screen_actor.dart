@@ -123,42 +123,36 @@ class DetailsScreenActor extends StatelessWidget {
                 height: 10,
               ),
               Opacity(
-                opacity: .6,
+                opacity: .8,
                 child: SizedBox(
                   width: Get.width,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
                         children: [
                           Icon(Icons.calendar_today_outlined, color: Colors.white, size: 15,),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          const SizedBox(width: 4,),
                           Text(
                             actor.birthday,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 15,
-                            ),
+                            style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,),
                           ),
                         ],
                       ),
-                      const Text('|'),
+                      const SizedBox(width: 5,),
+                      const Text('|', style: TextStyle(fontSize: 15, ),),
+                      const SizedBox(width: 5,),
                       genderIcon(),
-                      const Text('|'),
+                      const SizedBox(width: 5,),
+                      const Text('|', style: TextStyle(fontSize: 15, ),),
+                      const SizedBox(width: 5,),
                       Row(
                         children: [
                           Icon(Icons.location_pin, color: Colors.white, size: 20,),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          const SizedBox(width: 4,),
                           Text(
                             actor.placeOfBirth,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 15,
-                            ),
+                            style: const TextStyle(fontWeight: FontWeight.w400,fontSize: 15,),
                           ),
                         ],
                       ),
